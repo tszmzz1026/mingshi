@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="generator" content="Codex AI 辅助创作">
+    <meta name="description" content="明师试讲陪练，教案、模拟学生回应与点评均由 AI 生成，供教学练习参考。">
+    <title>明师 · 试讲陪练</title>
+    <style>
+        :root { --ink: #243d36; --muted: #707e75; --green: #245e4b; --light-green: #eef4ec; --paper: #f5f5ef; --line: #e3e8dd; --white: #fff; --orange: #a86c35; --shadow: 0 5px 22px #243d3605, 0 1px 3px #243d3604; }
+        * { box-sizing: border-box; }
+        body { margin: 0; color: var(--ink); background: radial-gradient(ellipse at 90% 45%, #e9eee280, transparent 48%), var(--paper); font-family: "Microsoft YaHei", "PingFang SC", sans-serif; font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+        button, input, textarea { font: inherit; }
+        button { cursor: pointer; }
+        button:disabled { cursor: not-allowed; opacity: .46; }
+        button, input, textarea, summary { -webkit-tap-highlight-color: transparent; }
+        :focus-visible { outline: 3px solid #87b79a; outline-offset: 4px; }
+        ::selection { color: #173f30; background: #dce9ce; }
+        [hidden] { display: none !important; }
+        .topbar { background: #fffefa; border-bottom: 1px solid #e6e9de; }
+        .topbar-inner { max-width: 1280px; margin: auto; min-height: 85px; padding: 17px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .brand { display: flex; align-items: center; gap: 13px; }
+        .brand-mark { display: grid; place-items: center; flex-shrink: 0; width: 45px; height: 45px; border-radius: 14px 14px 5px 14px; background: var(--green); box-shadow: inset 0 0 0 1px #ffffff14; color: #f4f3d9; }
+        .brand-name { font-family: "STSong", "SimSun", serif; font-size: 26px; font-weight: 750; letter-spacing: 3px; }
+        .brand-divider { color: #c4ccc0; padding: 0 12px; font-size: 19px; font-weight: 400; }
+        .brand-subtitle { font-family: "Microsoft YaHei", sans-serif; font-size: 13px; color: #63766b; letter-spacing: 2px; font-weight: 400; }
+        .header-actions { display: flex; align-items: center; gap: 23px; }
+        .local-label { font-size: 11px; color: #7b897d; }
+        .local-label::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #709d77; box-shadow: 0 0 0 4px #eef3e9; margin-right: 10px; vertical-align: 1px; }
+        .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 11px 21px; border: 1px solid transparent; border-radius: 11px; background: var(--green); color: #fff; font-weight: 600; font-size: 13px; box-shadow: 0 3px 6px #1f523512; transition: background .2s, transform .2s, box-shadow .2s; line-height: 1.5; }
+        .button:not(:disabled):hover { background: #194834; transform: translateY(-2px); box-shadow: 0 6px 13px #1f523520; }
+        .button:not(:disabled):active { transform: translateY(0); }
+        .button.secondary { background: #fffefa; color: #526557; border-color: #dfe5d8; box-shadow: none; }
+        .button.secondary:not(:disabled):hover { background: #f1f5eb; border-color: #b8cdb6; }
+        .button.quiet { padding: 8px 10px; min-height: 38px; background: transparent; color: #778474; border-color: transparent; font-weight: 400; box-shadow: none; }
+        .button.quiet:not(:disabled):hover { background: #eff3ea; color: var(--green); box-shadow: none; }
+        #settings-toggle { min-height: 37px; padding: 7px 15px; gap: 7px; font-size: 12px; }
+        #settings-toggle::before { content: ""; width: 15px; height: 15px; background: currentColor; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6'%3E%3Cpath d='m10 3-1 3-3 1-3-1-2 4 3 2v3l-2 2 3 4 3-1 3 1 1 2 4-1v-3l2-2 3-1-1-4-3-1-1-3-3-1Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat; }
+        .container { max-width: 1280px; padding: 0 40px; margin: auto; }
+        .settings { margin-top: 26px; padding: 25px 28px; background: #fffefa; border: 1px solid #dce5d4; border-radius: 18px; box-shadow: var(--shadow); }
+        .settings h2 { margin: 0 0 6px; font-size: 17px; }
+        .settings-grid { display: grid; grid-template-columns: 1.6fr 1.3fr 1fr auto; align-items: end; gap: 15px; margin-top: 20px; }
+        .settings-note { color: var(--muted); margin: 0; font-size: 12px; }
+        .hero { position: relative; isolation: isolate; min-height: 249px; margin: 30px 0 25px; padding: 37px 42px; display: flex; justify-content: space-between; align-items: center; gap: 22px; overflow: hidden; background: #214f3f; border: 1px solid #194b39; border-radius: 22px; box-shadow: 0 12px 35px #244b3210; }
+        .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 85% 50%, #79a56d26, transparent 55%), repeating-linear-gradient(0deg, transparent 0 37px, #e7f1d005 37px 38px), repeating-linear-gradient(90deg, transparent 0 37px, #e7f1d005 37px 38px); }
+        .hero::after { content: ""; position: absolute; z-index: -1; width: 430px; height: 430px; top: -100px; right: -95px; border: 1px solid #d5e3bc13; border-radius: 50%; box-shadow: 0 0 0 55px #dae7cb05, 0 0 0 110px #dae7cb03; }
+        .hero > div:first-child { position: relative; z-index: 1; max-width: 660px; }
+        .eyebrow { display: flex; align-items: center; gap: 8px; color: #c2d5a9; font-size: 10px; letter-spacing: 2px; font-weight: 400; }
+        .eyebrow::before { content: ""; display: inline-block; width: 6px; height: 6px; background: #d3e1af; border-radius: 1px; transform: rotate(45deg); }
+        h1 { font-family: "STSong", "SimSun", serif; font-size: clamp(28px, 3.1vw, 39px); font-weight: 500; letter-spacing: 1px; margin: 15px 0 16px; line-height: 1.45; color: #faf9e9; }
+        .hero p { color: #bfd0bd; margin: 0; font-size: 12px; line-height: 1.9; letter-spacing: .5px; }
+        .hero-stamp { position: relative; flex-shrink: 0; width: 258px; text-align: center; color: #c6d6b3; font-size: 10px; line-height: 1.9; letter-spacing: 2px; padding-top: 155px; }
+        .hero-illustration { position: absolute; width: 254px; height: 172px; top: -14px; left: 0; overflow: visible; }
+        .hero-stamp strong { display: none; }
+        .tabs { display: flex; width: fit-content; max-width: 100%; gap: 7px; padding: 5px; border: 1px solid #e0e5d7; background: #eaece2; border-radius: 13px; margin-bottom: 25px; }
+        .tab { display: inline-flex; align-items: center; justify-content: center; position: relative; gap: 10px; background: transparent; border: 1px solid transparent; border-radius: 9px; color: #74816f; padding: 10px 27px; font-weight: 500; font-size: 13px; white-space: nowrap; transition: color .2s, background .2s, box-shadow .2s; }
+        .tab:hover { color: var(--green); background: #f7f8f26b; }
+        .tab span { font-family: Georgia, serif; font-size: 11px; display: grid; place-items: center; width: 23px; height: 23px; border: 1px solid #cdd5c4; border-radius: 7px; color: #84917a; }
+        .tab[aria-selected="true"] { color: #234f3b; background: #fffefa; border-color: #e4e7dc; box-shadow: 0 2px 5px #314a2510; font-weight: 600; }
+        .tab[aria-selected="true"] span { color: white; background: #396b4d; border-color: #396b4d; }
+        .layout { display: grid; grid-template-columns: minmax(0, 1fr) 284px; gap: 25px; align-items: start; }
+        .layout > div { min-width: 0; }
+        .card { background: #fffefa; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+        .card-head { padding: 24px 28px 21px; display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px solid #ebeee4; background: linear-gradient(110deg, #fffefa, #f7f9f1); }
+        .card-head h2 { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 17px; font-weight: 600; letter-spacing: .3px; }
+        .card-head h2::before { content: "01"; display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; color: #7b9570; background: #edf2e4; border: 1px solid #e2e9d9; border-radius: 8px; font: italic 13px Georgia, serif; }
+        #panel-classroom .card-head h2::before { content: "02"; }
+        #panel-review .card-head h2::before { content: "03"; }
+        .card-head p { color: #788571; font-size: 11px; margin: 7px 0 0 38px; line-height: 1.8; }
+        .pill { display: inline-flex; align-items: center; gap: 6px; background: #f0f3e6; color: #72805c; border: 1px solid #e2e8d3; border-radius: 6px; padding: 4px 9px; font-size: 10px; white-space: nowrap; }
+        .pill::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #a0b280; }
+        .card-body { padding: 25px 28px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr 1.55fr; gap: 17px; }
+        label { display: block; color: #53654e; font-size: 12px; font-weight: 500; margin-bottom: 9px; }
+        input, textarea { width: 100%; border: 1px solid #e0e5d8; background: #f8f9f3; color: var(--ink); border-radius: 9px; padding: 12px 13px; min-width: 0; transition: border-color .2s, box-shadow .2s, background .2s; }
+        input:hover, textarea:hover { border-color: #bdcbb2; }
+        input:focus, textarea:focus { outline: none; border-color: #8eae83; background: #fffefa; box-shadow: 0 0 0 3px #83a76a15; }
+        input:disabled, textarea:disabled { background: #f2f4ed; color: #7f8a76; }
+        input::placeholder, textarea::placeholder { color: #98a08f; font-size: 12px; }
+        textarea { resize: vertical; min-height: 103px; line-height: 1.9; }
+        .form-bottom { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 24px; }
+        .hint { font-size: 11px; color: #7c8871; }
+        .output-wrap { margin-top: 22px; }
+        .output-head { padding: 16px 27px; display: flex; align-items: center; gap: 9px; border-bottom: 1px solid #ebeee4; font-size: 12px; font-weight: 500; color: #627455; }
+        .output-head::before { content: ""; width: 5px; height: 13px; background: #a4b788; border-radius: 2px; }
+        .empty { min-height: 285px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 35px 22px; text-align: center; background: radial-gradient(ellipse at center, #f3f6e880, transparent 65%); }
+        .empty-art { position: relative; isolation: isolate; width: 71px; height: 77px; border: 1px solid #d9e2c9; border-radius: 12px; display: grid; place-items: center; background: #f2f6e8; margin-bottom: 23px; color: #7c9763; box-shadow: 5px 6px 0 #e8eede, 6px 7px 0 #d9e2cc; font: 30px "SimSun", serif; transform: rotate(-5deg); }
+        .empty-art::after { content: ""; position: absolute; width: 30px; height: 10px; top: -5px; left: 19px; background: #d6dfb9a0; transform: rotate(8deg); }
+        .empty h3 { margin: 0 0 9px; font-family: "STSong", "SimSun", serif; color: #6a7d55; font-size: 19px; font-weight: 400; letter-spacing: 1px; }
+        .empty p { margin: 0; color: #87937b; font-size: 11px; max-width: 350px; line-height: 2.05; }
+        .rail-card { background: #fffefa; border: 1px solid var(--line); border-radius: 18px; padding: 23px 20px; box-shadow: var(--shadow); }
+        .rail-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; margin: 0 0 20px; letter-spacing: .4px; }
+        .rail-title::before { content: ""; width: 7px; height: 7px; border: 1px solid #9cac83; transform: rotate(45deg); }
+        .step { display: flex; gap: 11px; position: relative; padding: 15px 12px; border-radius: 11px; margin: 5px 0; }
+        .step.active { background: #edf3e7; }
+        .step:last-child { margin-bottom: 0; }
+        .step-index { flex-shrink: 0; width: 27px; height: 27px; border: 1px solid #d9e0cf; color: #8b987c; background: #f9faf4; border-radius: 8px; display: grid; place-items: center; font-family: Georgia, serif; font-size: 12px; }
+        .step.active .step-index { background: #4d7450; color: #fff; border-color: #4d7450; box-shadow: 0 3px 7px #4d745020; }
+        .step strong { display: block; color: #657753; font-size: 12px; font-weight: 500; margin: 3px 0 6px; }
+        .step.active strong { color: #32532e; font-weight: 600; }
+        .step p { color: #859276; margin: 0; font-size: 11px; line-height: 1.9; }
+        .note-card { position: relative; overflow: hidden; padding: 22px; margin-top: 19px; border: 1px solid #e9e3ca; border-radius: 15px; background: #f3f0df; }
+        .note-card::after { content: "“"; position: absolute; right: 9px; bottom: -44px; font: 110px Georgia, serif; color: #d4d3af40; pointer-events: none; }
+        .note-card h3 { position: relative; z-index: 1; color: #897a43; font-size: 12px; font-weight: 500; margin: 0 0 11px; }
+        .note-card h3::before { content: "✧"; margin-right: 7px; }
+        .note-card p { position: relative; z-index: 1; color: #93835b; font-size: 11px; line-height: 2.1; margin: 0; }
+        .student { display: flex; align-items: center; gap: 11px; border-bottom: 1px dashed #e0e6d7; padding: 17px 0; }
+        .student:last-child { border: 0; padding-bottom: 0; }
+        .avatar { flex-shrink: 0; width: 35px; height: 35px; display: grid; place-items: center; border: 1px solid #00000005; border-radius: 12px; font-size: 13px; font-weight: 500; }
+        .blue { background: #edf2fc; color: #5272a6; }
+        .orange { background: #fbf0e4; color: #ac713b; }
+        .green { background: #edf4e7; color: #6b884f; }
+        .gray { background: #f0f2ed; color: #78816e; }
+        .student strong { color: #607050; font-size: 12px; font-weight: 500; }
+        .student small { color: #88947c; font-size: 10px; display: block; margin-top: 3px; }
+        .classroom-setup { padding: 23px 27px; border-bottom: 1px solid var(--line); }
+        .classroom-setup .form-bottom { margin-top: 18px; }
+        .conversation { height: 370px; overflow-y: auto; padding: 22px 27px; scroll-behavior: smooth; background: #f8faf5; scrollbar-width: thin; scrollbar-color: #d6e1cd transparent; }
+        .system-message { width: fit-content; max-width: 100%; margin: 0 auto 24px; text-align: center; font-size: 10px; letter-spacing: .4px; color: #8a967e; padding: 5px 14px; background: #eff3e9; border: 1px solid #e7ecde; border-radius: 20px; }
+        .message { display: flex; gap: 10px; margin-bottom: 21px; }
+        .message.teacher { justify-content: flex-end; }
+        .message-inner { max-width: 83%; min-width: 0; }
+        .message-name { color: #7e8e73; font-size: 10px; margin-bottom: 6px; }
+        .teacher .message-name { text-align: right; }
+        .bubble { padding: 12px 16px; border: 1px solid #00000003; border-radius: 2px 13px 13px 13px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; line-height: 1.9; }
+        .teacher .bubble { background: #e4eedc; color: #42603a; border-color: #dae5d3; border-radius: 13px 2px 13px 13px; }
+        .composer { padding: 19px 27px 23px; border-top: 1px solid var(--line); background: #fffefa; }
+        .quick-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+        .quick { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #e0e5d8; background: #fdfefa; color: #748367; font-size: 11px; border-radius: 7px; padding: 6px 10px; transition: background .2s, border-color .2s; }
+        .quick::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #7192c6; }
+        .quick[data-student="小雨"]::before { background: #cf9b64; }
+        .quick[data-student="小默"]::before { background: #8cab73; }
+        .quick:not(:disabled):hover { border-color: #b8cbae; background: #edf4e7; }
+        .composer-actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 13px; }
+        .composer-actions > div { display: flex; gap: 9px; }
+        .status-note { margin: 12px 0 0; font-size: 11px; color: #728567; }
+        .status-note button { border: 0; background: transparent; color: var(--green); text-decoration: underline; text-underline-offset: 4px; font: inherit; }
+        .report-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .markdown { padding: 25px 28px; color: #4e6147; font-size: 13px; overflow-wrap: anywhere; }
+        .markdown > :first-child { margin-top: 0; }
+        .markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 { font-family: "Microsoft YaHei", sans-serif; font-size: 17px; font-weight: 600; color: var(--ink); margin: 25px 0 13px; letter-spacing: 0; }
+        .markdown h1 { font-size: 22px; border-bottom: 1px solid #e7ecde; padding-bottom: 14px; }
+        .markdown p { margin: 12px 0; line-height: 2; }
+        .markdown ul, .markdown ol { padding-left: 23px; }
+        .markdown li { margin: 7px 0; line-height: 1.95; }
+        .markdown li::marker { color: #8ba274; }
+        .markdown hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
+        .table-scroll { overflow-x: auto; margin: 18px 0; border: 1px solid #e2e8d9; border-radius: 10px; }
+        .markdown table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 12px; }
+        .markdown th, .markdown td { padding: 12px; border-bottom: 1px solid #e6ebdf; text-align: left; line-height: 1.8; }
+        .markdown tr:last-child td { border-bottom: 0; }
+        .markdown th { background: #edf3e5; color: #587347; font-weight: 500; }
+        .markdown tbody tr:nth-child(even) { background: #f9fbf5; }
+        .markdown code { background: #eef3e6; border-radius: 4px; padding: 2px 5px; }
+        .markdown pre { overflow-x: auto; padding: 15px; background: #f1f5eb; border: 1px solid #e4ebd9; border-radius: 10px; white-space: pre-wrap; }
+        .notice { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: #244f3e; color: #f6f8ef; border: 1px solid #ffffff24; padding: 13px 22px; box-shadow: 0 8px 30px #1d3c3525; border-radius: 12px; max-width: min(600px, 92vw); width: max-content; font-size: 13px; z-index: 10; overflow-wrap: anywhere; }
+        .notice.error { background: #895541; }
+        footer { display: flex; align-items: center; justify-content: center; gap: 13px; text-align: center; color: #91a082; font-size: 10px; letter-spacing: 1px; padding: 31px 0 26px; }
+        footer::before, footer::after { content: ""; width: 25px; height: 1px; background: #d8e0cf; flex-shrink: 0; }
+        @media (max-width: 1050px) {
+            .container { padding: 0 28px; }
+            .topbar-inner { padding: 16px 28px; }
+            .layout { grid-template-columns: minmax(0, 1fr) 242px; gap: 20px; }
+            .hero { padding: 32px; min-height: 225px; }
+            .hero-stamp { width: 195px; }
+            .hero-illustration { width: 205px; left: -8px; }
+            h1 { font-size: 32px; }
+            .settings-grid { grid-template-columns: 1fr 1fr; }
+            .rail-card { padding: 22px 16px; }
+            .step { padding: 13px 8px; gap: 9px; }
+            .card-body, .card-head { padding: 22px; }
+            .card-head h2 { font-size: 16px; }
+        }
+        @media (max-width: 800px) and (min-width: 721px) {
+            .layout { grid-template-columns: minmax(0, 1fr) 211px; gap: 16px; }
+            .hero-stamp { width: 160px; font-size: 9px; letter-spacing: 1px; }
+            .hero-illustration { width: 180px; left: -10px; }
+            .hero p { max-width: 350px; }
+            .form-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .form-row > div:last-child { grid-column: 1 / -1; }
+            .form-bottom { flex-wrap: wrap; }
+            .card-head { align-items: flex-start; flex-wrap: wrap; }
+            .step { padding: 12px 5px; }
+            .step strong { font-size: 11px; }
+            .step p { font-size: 10px; }
+        }
+        @media (max-width: 720px) {
+            .container { padding: 0 17px; }
+            .topbar-inner { padding: 14px 18px; min-height: 76px; gap: 9px; }
+            .brand { gap: 9px; }
+            .brand-name { font-size: 23px; letter-spacing: 2px; }
+            .brand-divider { padding: 0 6px; font-size: 15px; }
+            .brand-subtitle { font-size: 11px; letter-spacing: 1px; }
+            .brand-mark { width: 37px; height: 39px; border-radius: 11px 11px 4px 11px; }
+            .brand-mark svg { width: 23px; }
+            .local-label { display: none; }
+            #settings-toggle { min-height: 34px; padding: 6px 10px; font-size: 11px; }
+            #settings-toggle::before { width: 12px; height: 12px; }
+            .hero { min-height: 207px; margin: 21px 0 21px; padding: 27px 23px; border-radius: 18px; }
+            .hero > div:first-child { max-width: 100%; }
+            .eyebrow { font-size: 9px; letter-spacing: 1.5px; }
+            h1 { max-width: 270px; font-size: 29px; line-height: 1.6; margin: 12px 0 10px; letter-spacing: 1px; }
+            .hero p { font-size: 10px; max-width: 260px; line-height: 1.9; letter-spacing: 0; }
+            .hero-stamp { position: absolute; width: 180px; right: -51px; top: 37px; opacity: .16; pointer-events: none; color: transparent; }
+            .hero-illustration { width: 200px; height: 180px; left: 0; }
+            .tabs { width: 100%; gap: 3px; padding: 4px; border-radius: 11px; margin-bottom: 20px; }
+            .tab { flex: 1; gap: 7px; padding: 10px 5px; font-size: 12px; border-radius: 8px; }
+            .tab span { width: 20px; height: 21px; font-size: 10px; border-radius: 6px; }
+            .layout { grid-template-columns: minmax(0, 1fr); }
+            aside { display: none; }
+            .card { border-radius: 15px; }
+            .card-head, .card-body, .classroom-setup, .composer, .markdown { padding: 20px; }
+            .card-head { gap: 8px; }
+            .card-head h2 { font-size: 15px; gap: 8px; }
+            .card-head h2::before { width: 24px; height: 25px; font-size: 11px; border-radius: 7px; }
+            .card-head p { margin-left: 32px; font-size: 10px; max-width: 210px; }
+            .pill { font-size: 9px; padding: 4px 6px; gap: 4px; }
+            .form-row { grid-template-columns: 1fr 1fr; gap: 15px 13px; }
+            .form-row > div:last-child { grid-column: 1 / -1; }
+            label { font-size: 11px; margin-bottom: 7px; }
+            input, textarea { font-size: 14px; padding: 11px 12px; }
+            .form-bottom { flex-wrap: wrap; gap: 15px; margin-top: 21px; }
+            #prep-form .form-bottom .hint { flex-basis: 100%; }
+            #generate-prep { width: 100%; }
+            .hint { font-size: 10px; }
+            .button { padding: 10px 16px; font-size: 12px; min-height: 42px; }
+            .output-wrap { margin-top: 18px; }
+            .output-head { padding: 15px 20px; font-size: 11px; }
+            .empty { min-height: 266px; padding: 34px 20px; }
+            .empty h3 { font-size: 18px; }
+            .empty p { font-size: 10px; }
+            .empty-art { transform: rotate(-4deg) scale(.92); margin-bottom: 19px; }
+            .settings { padding: 21px; margin-top: 20px; border-radius: 15px; }
+            .settings-grid { grid-template-columns: 1fr; }
+            .settings-note { font-size: 11px; }
+            .conversation { padding: 20px; height: 340px; }
+            .classroom-setup .form-bottom .hint { flex: 1 1 160px; }
+            .classroom-setup .form-bottom .button { flex-shrink: 0; }
+            .quick-actions { gap: 6px; }
+            .quick { padding: 6px 9px; font-size: 10px; }
+            .bubble { padding: 10px 13px; font-size: 12px; }
+            .avatar { width: 31px; height: 32px; font-size: 12px; border-radius: 10px; }
+            .card-head.report-head { align-items: flex-start; }
+            .report-head h2 { align-items: flex-start; line-height: 1.9; }
+            .report-actions { gap: 8px; }
+            .report-actions .button { padding: 9px 12px; font-size: 11px; }
+            .markdown { font-size: 12px; }
+            .status-note { font-size: 10px; }
+            footer { font-size: 9px; gap: 6px; letter-spacing: 0; padding: 27px 0; }
+            footer::before, footer::after { width: 10px; }
+        }
+        @media (max-width: 370px) {
+            .brand-subtitle { font-size: 10px; letter-spacing: 0; }
+            .brand-divider { padding: 0 5px; }
+            .card-head { flex-wrap: wrap; }
+            .card-head .pill { margin-left: 32px; }
+            .tab { gap: 5px; font-size: 11px; }
+        }
+        @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+        /* [MOD] Refine visual hierarchy and responsive spacing. */
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/><path d="M12 6v14M6 8l3 1M15 9l3-1M6 12l3 1M15 13l3-1"/></svg></span>
+                <div class="brand-name">明师<span class="brand-divider">/</span><span class="brand-subtitle">试讲陪练</span></div>
+            </div>
+            <div class="header-actions"><span class="local-label" id="storage-status">数据保存在本机</span><button class="button secondary" id="settings-toggle" type="button" aria-controls="settings" aria-expanded="false">设置</button></div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="settings" id="settings" hidden aria-labelledby="settings-title">
+            <h2 id="settings-title">连接你的大模型</h2>
+            <p class="settings-note">设置与课堂记录仅保存在此浏览器。API Key 只会发送至你填写的接口地址。</p>
+            <form id="settings-form" class="settings-grid">
+                <div><label for="base-url">接口地址（OpenAI 兼容）</label><input id="base-url" type="url" autocomplete="off" spellcheck="false" placeholder="https://api.deepseek.com" required></div>
+                <div><label for="api-key">API Key</label><input id="api-key" type="password" autocomplete="off" placeholder="填写你的 API Key"></div>
+                <div><label for="model">模型名称</label><input id="model" autocomplete="off" spellcheck="false" placeholder="deepseek-chat" required></div>
+                <button class="button" type="submit" id="save-settings">保存设置</button>
+            </form>
+        </section>
+        <section class="hero">
+            <div><div class="eyebrow">每一次练习，都更接近好老师</div><h1 id="hero-title">好课堂，从一份好教案开始。</h1><p id="hero-description">理清教学思路，预演真实课堂，让每一次试讲都有方向。</p></div>
+            <div class="hero-stamp"><svg class="hero-illustration" viewBox="0 0 280 190" fill="none" aria-hidden="true">
+                <ellipse cx="142" cy="158" rx="91" ry="10" fill="#0f3629" opacity=".28"/>
+                <path d="M56 66c33-7 62 0 87 18v72c-26-18-55-25-87-18V66Z" fill="#47715b" stroke="#9fb790" stroke-width="1.2"/>
+                <path d="M143 84c24-21 51-30 81-27v72c-31-2-57 7-81 27V84Z" fill="#608569" stroke="#b3c79b" stroke-width="1.2"/>
+                <path d="M49 58c35-6 66 3 94 26v65c-27-21-58-29-94-23V58Z" fill="#f0f0d6" stroke="#c4d0a8" stroke-width="1.1"/>
+                <path d="M143 84c22-27 47-39 75-39v69c-29 1-54 13-75 35V84Z" fill="#e3e8c8" stroke="#c4d0a8" stroke-width="1.1"/>
+                <path d="M143 84v64" stroke="#9bb18c"/>
+                <path d="M65 77c22-2 42 4 61 17M65 88c22-2 42 4 61 17M65 99c17-1 32 3 46 11" stroke="#b3c29b" stroke-width="2" stroke-linecap="round"/>
+                <path d="M160 85c12-12 26-20 41-24M160 97c12-12 26-20 41-24M160 109c8-8 17-14 27-18" stroke="#a6b68a" stroke-width="2" stroke-linecap="round"/>
+                <path d="M180 49v42l8-11 8 3V45" fill="#c3a35d" stroke="#d8c084" stroke-width="1"/>
+                <path d="m235 28 3 9 9 3-9 3-3 9-3-9-9-3 9-3 3-9Z" fill="#d7c683"/>
+                <path d="m59 27 2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z" fill="#b7cca1"/>
+                <circle cx="230" cy="83" r="2" fill="#b7cca1"/>
+                <circle cx="92" cy="37" r="2" fill="#b7cca1"/>
+                <path d="M36 105c-10-22-6-41 6-55M241 120c14-13 21-28 19-46" stroke="#88a57a" stroke-width="1.2" stroke-dasharray="3 6" stroke-linecap="round"/>
+            </svg><strong>学 · 练 · 思</strong>属于师范生的试讲练习室</div>
+        </section>
+        <nav class="tabs" role="tablist" aria-label="试讲练习步骤">
+            <button class="tab" id="tab-prep" role="tab" aria-selected="true" aria-controls="panel-prep" data-tab="prep"><span>01</span>备课助手</button>
+            <button class="tab" id="tab-classroom" role="tab" aria-selected="false" aria-controls="panel-classroom" data-tab="classroom" tabindex="-1"><span>02</span>模拟课堂</button>
+            <button class="tab" id="tab-review" role="tab" aria-selected="false" aria-controls="panel-review" data-tab="review" tabindex="-1"><span>03</span>试讲点评</button>
+        </nav>
+        <div class="layout">
+            <div>
+                <section id="panel-prep" role="tabpanel" aria-labelledby="tab-prep">
+                    <div class="card">
+                        <div class="card-head"><div><h2>今天，准备讲什么？</h2><p>告诉我你的教学内容，一起搭好课堂的骨架。</p></div><span class="pill">45 分钟课时</span></div>
+                        <form class="card-body" id="prep-form" novalidate>
+                            <div class="form-row"><div><label for="prep-subject">学科</label><input id="prep-subject" placeholder="例如：数学" maxlength="100" required></div><div><label for="prep-grade">年级</label><input id="prep-grade" placeholder="例如：七年级" maxlength="100" required></div><div><label for="prep-topic">课题</label><input id="prep-topic" placeholder="例如：一元一次方程" maxlength="200" required></div></div>
+                            <div class="form-bottom"><span class="hint">教学目标 · 课堂流程 · 提问清单 · 板书设计</span><button class="button" id="generate-prep" type="submit">生成教案 <span aria-hidden="true">↗</span></button></div>
+                        </form>
+                    </div>
+                    <div class="card output-wrap"><div class="output-head">你的教案框架</div><div id="prep-output" aria-live="polite"><div class="empty"><div class="empty-art" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="9" y="6" width="23" height="29" rx="3"/><path d="M6 12v19a4 4 0 0 0 4 4M15 14h11M15 20h11M15 26h6"/><path d="m26 3 1 3 3 1-3 1-1 3-1-3-3-1 3-1Z" fill="currentColor" stroke="none"/></svg></div><h3>让教学灵感，在这里落笔</h3><p>填写上方的学科、年级和课题，<br>明师会为你整理一份可以直接拿来练习的教案框架。</p></div></div></div>
+                </section>
+                <section id="panel-classroom" role="tabpanel" aria-labelledby="tab-classroom" hidden>
+                    <div class="card">
+                        <div class="card-head"><div><h2>你的模拟课堂</h2><p>你来讲课，三位学生陪你练习。</p></div><span class="pill" id="class-status">尚未开课</span></div>
+                        <form id="classroom-form" class="classroom-setup" novalidate>
+                            <div class="form-row"><div><label for="class-subject">学科</label><input id="class-subject" placeholder="例如：数学" maxlength="100" required></div><div><label for="class-grade">年级</label><input id="class-grade" placeholder="例如：七年级" maxlength="100" required></div><div><label for="class-topic">课题</label><input id="class-topic" placeholder="例如：一元一次方程" maxlength="200" required></div></div>
+                            <div class="form-bottom"><span class="hint">分段讲述，给学生留一点回应的时间。</span><button class="button" type="submit" id="start-class">开始上课</button></div>
+                        </form>
+                        <div id="conversation" class="conversation" role="log" aria-label="课堂对话" aria-live="polite"></div>
+                        <form class="composer" id="message-form">
+                            <div class="quick-actions"><button class="quick" type="button" data-student="小阳">点名小阳</button><button class="quick" type="button" data-student="小雨">点名小雨</button><button class="quick" type="button" data-student="小默">点名小默</button></div>
+                            <label for="teacher-input" class="hint">教师讲课内容</label><textarea id="teacher-input" placeholder="老师，请开始你的讲述…（Ctrl + Enter 发送）"></textarea>
+                            <div class="composer-actions"><button class="button quiet" id="reset-class" type="button">清空重开</button><div><button class="button secondary" id="end-class" type="button">下课</button><button class="button" id="send-message" type="submit">发送 <span aria-hidden="true">↗</span></button></div></div>
+                            <p id="class-note" class="status-note"></p>
+                        </form>
+                    </div>
+                </section>
+                <section id="panel-review" role="tabpanel" aria-labelledby="tab-review" hidden>
+                    <div class="card"><div class="card-head report-head"><div><h2>把每一次试讲，变成下一次进步</h2><p>依据本次课堂原话，从四个维度回看你的教学。</p></div></div><div class="card-body"><div class="report-actions"><button class="button" id="generate-review" type="button">生成点评报告</button><button class="button secondary" id="export-report" type="button" disabled>导出报告</button><button class="button secondary" id="copy-report" type="button" disabled>复制报告</button></div><p class="hint" id="review-context">先完成一次试讲，再来看看自己的课堂表现。</p></div></div>
+                    <div class="card output-wrap"><div class="output-head">试讲复盘报告</div><div id="review-output" aria-live="polite"><div class="empty"><div class="empty-art" aria-hidden="true">思</div><h3>听见反馈，也看见成长</h3><p>语言表达 / 教学逻辑 / 互动引导 / 节奏把控<br>每一条建议，都从你的真实课堂出发。</p></div></div></div>
+                </section>
+            </div>
+            <aside aria-label="练习指引">
+                <div class="rail-card"><h2 class="rail-title">一堂好课的练习路径</h2><div class="step active" data-step="prep"><span class="step-index">1</span><div><strong>先备课，理清思路</strong><p>从教学目标到课堂提问，<br>让每个环节都有准备。</p></div></div><div class="step" data-step="classroom"><span class="step-index">2</span><div><strong>再试讲，走进课堂</strong><p>面对不同性格的学生，<br>练表达，也练临场应对。</p></div></div><div class="step" data-step="review"><span class="step-index">3</span><div><strong>做复盘，看见进步</strong><p>用课堂原话定位问题，<br>带着一个改进点再出发。</p></div></div></div>
+                <div class="note-card" id="prep-note"><h3>一点备课小建议</h3><p>试着把“我要讲什么”换成“学生能学会什么”。明确的教学目标，会让你的试讲更有力量。</p></div>
+                <div class="rail-card" id="student-card" hidden style="margin-top: 19px"><h2 class="rail-title" style="margin-bottom: 0">今天的三位学生</h2><div class="student"><span class="avatar blue">阳</span><div><strong>小阳 · 好问型</strong><small>反应快，喜欢追问为什么</small></div></div><div class="student"><span class="avatar orange">雨</span><div><strong>小雨 · 走神型</strong><small>需要互动，偶尔会开小差</small></div></div><div class="student"><span class="avatar green">默</span><div><strong>小默 · 内向型</strong><small>等你点名，才会轻声回答</small></div></div></div>
+            </aside>
+        </div>
+        <footer>明师 · AI 辅助创作｜教案、模拟学生回应与点评由 AI 生成，供练习参考</footer>
+    </main>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <script>
+        "use strict";
+
+        const PREP_PROMPT = "你是一位有 15 年教龄的学科教研组长，擅长把一节新课拆解成新教师能直接照着练的教案。\n现在一位师范生要试讲：学科｛学科｝，年级｛年级｝，课题｛课题｝，课时 45 分钟。\n请输出一份教案框架，严格按以下结构，不要输出结构之外的内容：\n1. 教学目标（知识与技能 / 过程与方法 / 情感态度，各 1–2 条，动词可测量，如\"能说出\"\"会运用\"，不要写\"了解、掌握\"这类空话）\n2. 教学重点与难点（各 1–2 点，并各用一句话说明为什么难、打算怎么突破）\n3. 课堂流程表（环节 | 时间 | 教师活动 | 学生活动 | 设计意图），环节依次为：导入、新授、例题/活动、提问互动、课堂小结、作业布置\n4. 预设提问清单：列 5 个课堂提问，按由浅入深排序，每个问题后标注\"预期学生回答\"和\"若答不出，教师的追问/提示\"\n5. 板书设计：用文字示意板书的版面布局\n语言简洁，像给同事的工作文档，不要寒暄。";
+        const CLASS_PROMPT = "你是一个\"模拟课堂\"引擎，同时扮演一名教师面前的三名学生。课堂背景：学科｛学科｝，年级｛年级｝，课题｛课题｝。用户扮演教师，逐段发来讲课内容，你只以学生身份回应，绝不替教师讲课、绝不跳出角色做解释。\n\n三名学生的人设与行为规则：\n- **小阳（好问型）**：好奇心强、反应快。教师讲到新概念或留下悬念时，他最容易举手追问，问题要符合本年级认知水平，可以问\"为什么\"，偶尔会答对并抢答。\n- **小雨（走神型）**：前 5 分钟认真，之后注意力下降。教师连续讲超过 2 段、且没有任何提问或互动时，她会触发小动作（如转笔、小声跟同桌说话、答非所问），需要教师点名或设置提问才能拉回注意力；被点名时先愣一下，再尝试回答，可能答错。\n- **小默（内向型）**：听懂了但从不主动发言。只有被教师点名时才开口，回答简短、带犹豫（如\"嗯……应该是……\"），但内容往往是对的；答对后如果被表扬，会稍微积极一点。\n\n输出规则：\n1. 每次只输出学生反应，格式为：动作或神态 + 发言，如\"举手：老师，为什么……\"\n2. 每轮最多 1–2 名学生有反应；教师的讲课没有可回应点时，输出\"安静听讲\"即可，不要硬凑发言。\n3. 学生的知识严格限定在本节课已讲过的内容和本年级应知范围内，不许说出超纲或教师还没讲的概念。\n4. 教师点名某位学生时，该学生必须回应（按其人设回应）。\n5. 发言口语化、短句，像真实课堂，不要书面语长篇大论。\n6. 当用户输入\"下课\"时，输出\"起立：老师再见！\"并结束课堂模式。";
+        const REVIEW_PROMPT = "你是一位师范院校的教学督导，正在听一位师范生的试讲复盘。下面是这堂模拟课的完整对话记录（教师发言与三名 AI 学生的反应）：\n｛完整对话记录｝\n请按以下结构输出点评报告，只依据记录中的原话举证，不许编造记录里没有的情节：\n1. 四维评分（每项 25 分，给出分数和一句话依据）：语言表达 / 教学逻辑 / 互动引导 / 节奏把控\n2. 总分（100 分制）与一句话总评\n3. 做得好的 2 点：每点引用教师的一句原话作为证据\n4. 必须改进的 3 点：每点引用课堂原话或指出具体环节，说明问题在哪、下一遍具体怎么做（给可执行动作，如\"提问后停顿 3 秒再点名\"，不要写\"加强互动\"这类空话）\n5. 复盘小结：用 3 句话总结这堂课，并给出下一次练习只练一个点的建议\n语气像督导老师当面反馈：肯定具体、批评更具体，不说套话。";
+        const STORAGE_KEY = "mingshi_trial_class_v1";
+        const DEFAULT_SETTINGS = { base_url: "https://api.deepseek.com", api_key: "", model: "deepseek-chat" };
+        const HERO_COPY = {
+            prep: ["好课堂，从一份好教案开始。", "理清教学思路，预演真实课堂，让每一次试讲都有方向。"],
+            classroom: ["老师，同学们准备好了。", "在真实的互动里，练习表达、提问与课堂应变。"],
+            review: ["回看一堂课，看见下一步。", "用具体的课堂证据，找到下一次练习的方向。"]
+        };
+        let settings = { ...DEFAULT_SETTINGS };
+        let classroom = null;
+        let prep_report = "";
+        let review_report = "";
+        let review_signature = "";
+        let busy = "";
+        let notice_timer = 0;
+
+        function el(id) { return document.getElementById(id); }
+
+        function notify(message, is_error = false) {
+            clearTimeout(notice_timer);
+            el("notice").textContent = message;
+            el("notice").classList.toggle("error", is_error);
+            el("notice").hidden = false;
+            notice_timer = setTimeout(() => { el("notice").hidden = true; }, is_error ? 12000 : 5000);
+        }
+
+        function persist() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({ settings, classroom, prep_report, review_report, review_signature }));
+                el("storage-status").textContent = "数据保存在本机";
+                return true;
+            } catch (error) {
+                el("storage-status").textContent = "本机保存失败";
+                notify("浏览器未能保存数据，请检查存储权限或剩余空间；关闭页面前请导出报告。", true);
+                return false;
+            }
+        }
+
+        function restore() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+                if (!saved || typeof saved !== "object") { return; }
+                for (const field of Object.keys(DEFAULT_SETTINGS)) {
+                    if (typeof saved.settings?.[field] === "string") { settings[field] = saved.settings[field]; }
+                }
+                const value = saved.classroom;
+                if (value && ["subject", "grade", "topic"].every(field => typeof value[field] === "string") && Array.isArray(value.messages) && value.messages.length > 0 && value.messages[0].role === "system" && value.messages.every(message => message && ["system", "user", "assistant"].includes(message.role) && typeof message.content === "string")) {
+                    classroom = { subject: value.subject, grade: value.grade, topic: value.topic, messages: value.messages, ended: value.ended === true };
+                }
+                if (typeof saved.prep_report === "string") { prep_report = saved.prep_report; }
+                if (typeof saved.review_report === "string") { review_report = saved.review_report; }
+                if (typeof saved.review_signature === "string") { review_signature = saved.review_signature; }
+            } catch (error) {
+                notify("无法读取已保存的设置或记录，请检查浏览器存储权限。", true);
+            }
+        }
+
+        function escape_html(text) {
+            return text.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[character]);
+        }
+
+        function inline_markdown(text) {
+            return escape_html(text).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        }
+
+        function render_markdown(text) {
+            const lines = text.replace(/\r\n?/g, "\n").split("\n");
+            const html = [];
+            let index = 0;
+            const cells = line => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map(cell => cell.trim());
+            const is_separator = line => line.includes("|") && cells(line).every(cell => /^:?-{3,}:?$/.test(cell));
+            const is_special = position => /^(#{1,6}\s|\s*[-*+]\s|\s*\d+[.)、]\s|```|\s*(?:-{3,}|\*{3,}|_{3,})\s*$)/.test(lines[position]) || (position + 1 < lines.length && lines[position].includes("|") && is_separator(lines[position + 1]));
+            while (index < lines.length) {
+                const line = lines[index];
+                if (!line.trim()) { index++; continue; }
+                if (/^```/.test(line)) {
+                    const code = [];
+                    index++;
+                    while (index < lines.length && !/^```/.test(lines[index])) { code.push(lines[index++]); }
+                    html.push(`<pre><code>${escape_html(code.join("\n"))}</code></pre>`);
+                    if (index < lines.length) { index++; }
+                    continue;
+                }
+                const heading = line.match(/^(#{1,6})\s+(.+)$/);
+                if (heading) { html.push(`<h${heading[1].length}>${inline_markdown(heading[2])}</h${heading[1].length}>`); index++; continue; }
+                if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { html.push("<hr>"); index++; continue; }
+                if (index + 1 < lines.length && line.includes("|") && is_separator(lines[index + 1])) {
+                    const header = cells(line);
+                    const rows = [];
+                    index += 2;
+                    while (index < lines.length && lines[index].includes("|") && lines[index].trim()) {
+                        const row = cells(lines[index++]);
+                        rows.push(`<tr>${header.map((_, position) => `<td>${inline_markdown(row[position] || "")}</td>`).join("")}</tr>`);
+                    }
+                    html.push(`<div class="table-scroll"><table><thead><tr>${header.map(cell => `<th>${inline_markdown(cell)}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`);
+                    continue;
+                }
+                const list_match = line.match(/^\s*([-*+]|\d+[.)、])\s+(.+)$/);
+                if (list_match) {
+                    const ordered = /^\d/.test(list_match[1]);
+                    const tag = ordered ? "ol" : "ul";
+                    const items = [];
+                    const start = ordered ? ` start="${parseInt(list_match[1], 10)}"` : "";
+                    while (index < lines.length) {
+                        const item = lines[index].match(/^\s*([-*+]|\d+[.)、])\s+(.+)$/);
+                        if (!item || /^\d/.test(item[1]) !== ordered) { break; }
+                        items.push(`<li>${inline_markdown(item[2])}</li>`);
+                        index++;
+                    }
+                    html.push(`<${tag}${start}>${items.join("")}</${tag}>`);
+                    continue;
+                }
+                const paragraph = [line];
+                index++;
+                while (index < lines.length && lines[index].trim() && !is_special(index)) { paragraph.push(lines[index++]); }
+                html.push(`<p>${paragraph.map(inline_markdown).join("<br>")}</p>`);
+            }
+            return html.join("");
+        }
+
+        function show_output(id, text) {
+            el(id).classList.add("markdown");
+            el(id).innerHTML = render_markdown(text);
+        }
+
+        function select_tab(name, focus = false) {
+            for (const tab of document.querySelectorAll("[data-tab]")) {
+                const active = tab.dataset.tab === name;
+                tab.setAttribute("aria-selected", String(active));
+                tab.tabIndex = active ? 0 : -1;
+                el(`panel-${tab.dataset.tab}`).hidden = !active;
+                if (active && focus) { tab.focus(); }
+            }
+            for (const step of document.querySelectorAll("[data-step]")) { step.classList.toggle("active", step.dataset.step === name); }
+            el("hero-title").textContent = HERO_COPY[name][0];
+            el("hero-description").textContent = HERO_COPY[name][1];
+            el("student-card").hidden = name !== "classroom";
+            el("prep-note").hidden = name !== "prep";
+            if (name === "classroom") { el("conversation").scrollTop = el("conversation").scrollHeight; }
+        }
+
+        function open_settings(focus = false) {
+            el("settings").hidden = false;
+            el("settings-toggle").setAttribute("aria-expanded", "true");
+            if (focus) { el("api-key").focus(); }
+        }
+
+        function get_endpoint(base_url) {
+            let url;
+            try { url = new URL(base_url); } catch (error) { throw new Error("接口地址格式不正确，请填写完整的网址。"); }
+            if (!["https:", "http:"].includes(url.protocol) || url.username || url.password || url.search || url.hash) { throw new Error("请填写 http 或 https 接口地址，不要包含账号、查询参数或锚点。"); }
+            const path = url.pathname.replace(/\/+$/, "");
+            url.pathname = path.endsWith("/chat/completions") ? path : `${path}/chat/completions`;
+            return url.href;
+        }
+
+        function require_settings() {
+            if (!settings.api_key.trim()) { notify("请先在设置中填写并保存 API Key，再开始练习。"); open_settings(true); return false; }
+            if (!settings.model.trim()) { notify("请先填写并保存模型名称。"); open_settings(); return false; }
+            try { get_endpoint(settings.base_url); } catch (error) { notify(error.message, true); open_settings(); return false; }
+            return true;
+        }
+
+        async function call_model(messages) {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 90000);
+            try {
+                const response = await fetch(get_endpoint(settings.base_url), {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${settings.api_key}` },
+                    body: JSON.stringify({ model: settings.model, messages, stream: false }),
+                    signal: controller.signal,
+                    redirect: "error",
+                    credentials: "omit",
+                    referrerPolicy: "no-referrer"
+                });
+                const raw = await response.text();
+                let data;
+                try { data = JSON.parse(raw); } catch (error) { data = null; }
+                if (!response.ok) {
+                    const descriptions = { 400: "请求格式或模型参数不被支持", 401: "Key 无效或已过期", 402: "账户余额不足，请检查接口账户", 403: "当前 Key 无权访问此接口或模型", 404: "接口地址或模型名称不正确", 408: "接口处理超时，请稍后重试", 413: "课堂记录过长，超出接口接收限制", 429: "调用过于频繁或额度不足，请稍后再试" };
+                    const detail = typeof data?.error?.message === "string" ? data.error.message : typeof data?.message === "string" ? data.message : "";
+                    const reason = descriptions[response.status] || (response.status >= 500 ? "模型服务暂时不可用，请稍后重试" : "请求未能完成，请检查接口设置");
+                    throw new Error(`接口返回 ${response.status}：${reason}${detail ? `。接口说明：${detail.slice(0, 240).replaceAll(settings.api_key, "[已隐藏]")}` : ""}`);
+                }
+                const content = data?.choices?.[0]?.message?.content;
+                if (typeof content !== "string" || !content.trim()) { throw new Error("接口没有返回有效的文字内容，请检查模型是否支持 chat/completions。"); }
+                return content.trim();
+            } catch (error) {
+                if (error.name === "AbortError") { throw new Error("等待模型超过 90 秒，请稍后重试；课堂记录已保留。"); }
+                if (error instanceof TypeError) { throw new Error("无法连接模型接口，请检查网络、接口地址及接口的浏览器跨域访问（CORS）设置。"); }
+                throw error;
+            } finally { clearTimeout(timeout); }
+        }
+
+        function read_metadata(prefix) {
+            const metadata = { subject: el(`${prefix}-subject`).value.trim(), grade: el(`${prefix}-grade`).value.trim(), topic: el(`${prefix}-topic`).value.trim() };
+            if (!metadata.subject || !metadata.grade || !metadata.topic) { notify("请完整填写学科、年级和课题。"); return null; }
+            return metadata;
+        }
+
+        function fill_prompt(template, metadata) {
+            const values = { "学科": metadata.subject, "年级": metadata.grade, "课题": metadata.topic };
+            return template.replace(/｛(学科|年级|课题)｝/g, (_, key) => values[key]);
+        }
+
+        function has_pending() { return Boolean(classroom && !classroom.ended && classroom.messages.at(-1)?.role === "user"); }
+
+        function current_signature() { return classroom ? JSON.stringify(classroom.messages) : ""; }
+
+        function update_controls() {
+            const active = Boolean(classroom && !classroom.ended);
+            const pending = has_pending();
+            el("generate-prep").disabled = Boolean(busy);
+            el("generate-prep").textContent = busy === "prep" ? "生成中…" : "生成教案 ↗";
+            el("generate-review").disabled = Boolean(busy);
+            el("generate-review").textContent = busy === "review" ? "生成中…" : "生成点评报告";
+            el("start-class").disabled = Boolean(busy) || Boolean(classroom);
+            el("save-settings").disabled = Boolean(busy);
+            el("teacher-input").disabled = !active || Boolean(busy) || pending;
+            el("send-message").disabled = !active || Boolean(busy);
+            el("send-message").textContent = busy === "classroom" ? "学生回应中…" : pending ? "重试回应" : "发送 ↗";
+            el("end-class").disabled = !active || Boolean(busy) || pending;
+            el("reset-class").disabled = !classroom || Boolean(busy);
+            for (const button of document.querySelectorAll("[data-student]")) { button.disabled = !active || Boolean(busy) || pending; }
+            for (const field of ["subject", "grade", "topic"]) { el(`class-${field}`).disabled = Boolean(classroom) || Boolean(busy); }
+            el("export-report").disabled = !review_report;
+            el("copy-report").disabled = !review_report;
+            el("class-status").textContent = busy === "classroom" ? "学生思考中" : classroom?.ended ? "已下课" : active ? "课堂进行中" : "尚未开课";
+            el("class-note").replaceChildren();
+            if (classroom?.ended) {
+                el("class-note").append(document.createTextNode("已下课，可前往『试讲点评』生成报告。"));
+                const link = document.createElement("button");
+                link.type = "button";
+                link.textContent = "前往点评 →";
+                link.addEventListener("click", () => select_tab("review", true));
+                el("class-note").append(link);
+            } else if (pending && !busy) { el("class-note").textContent = "讲课内容已保存，点击“重试回应”继续，不会重复发送教师消息。"; }
+            else { el("class-note").textContent = active ? "课堂记录实时保存在本机，刷新后可继续。" : "填写课堂信息，点击“开始上课”。"; }
+            el("review-context").textContent = review_report && review_signature !== current_signature() ? "当前显示的是上一次报告；课堂记录已变化，请重新生成点评。" : classroom ? `本次试讲：${classroom.subject} · ${classroom.grade} · ${classroom.topic}` : "先完成一次试讲，再来看看自己的课堂表现。";
+        }
+
+        function append_bubble(name, content, tone, teacher = false) {
+            const row = document.createElement("div");
+            row.className = `message${teacher ? " teacher" : ""}`;
+            if (!teacher) {
+                const avatar = document.createElement("span");
+                avatar.className = `avatar ${tone}`;
+                avatar.textContent = name.startsWith("小") ? name.slice(1) : "生";
+                avatar.setAttribute("aria-hidden", "true");
+                row.append(avatar);
+            }
+            const inner = document.createElement("div");
+            inner.className = "message-inner";
+            const label = document.createElement("div");
+            label.className = "message-name";
+            label.textContent = name;
+            const bubble = document.createElement("div");
+            bubble.className = `bubble ${tone}`;
+            bubble.textContent = content;
+            inner.append(label, bubble);
+            row.append(inner);
+            el("conversation").append(row);
+        }
+
+        function parse_students(content) {
+            const paragraphs = content.replace(/\r\n?/g, "\n").replace(/\n(?=\s*(?:[-*]\s*)?(?:\*\*)?[【\[]?小[阳雨默])/g, "\n\n").split(/\n\s*\n/).filter(part => part.trim());
+            return paragraphs.map(part => {
+                const clean = part.trim().replace(/^[-*]\s+/, "");
+                const match = clean.match(/^(?:\*\*)?[【\[]?(小阳|小雨|小默)(?:[（(][^）)\n]*[）)])?[】\]]?(?:\*\*)?\s*[：:]?\s*/);
+                const name = match ? match[1] : /安静听讲|老师再见/.test(clean) ? "全班" : "学生";
+                return { name, content: match ? clean.slice(match[0].length) : clean, tone: ({ "小阳": "blue", "小雨": "orange", "小默": "green" })[name] || "gray" };
+            });
+        }
+
+        function render_conversation() {
+            el("conversation").replaceChildren();
+            const system = document.createElement("div");
+            system.className = "system-message";
+            system.textContent = classroom ? "课堂开始，请老师开讲。" : "三位同学正在等你，准备好就开始吧。";
+            el("conversation").append(system);
+            if (classroom) {
+                for (const message of classroom.messages) {
+                    if (message.role === "user") { append_bubble("教师 · 你", message.content, "", true); }
+                    if (message.role === "assistant") { for (const student of parse_students(message.content)) { append_bubble(student.name, student.content, student.tone); } }
+                }
+            }
+            el("conversation").scrollTop = el("conversation").scrollHeight;
+            update_controls();
+        }
+
+        async function send_teacher(content = "") {
+            if (busy || !classroom || classroom.ended || !require_settings()) { return; }
+            if (!has_pending()) {
+                if (!content.trim()) { notify("请先输入讲课内容。"); return; }
+                classroom.messages.push({ role: "user", content: content.trim() });
+                el("teacher-input").value = "";
+                persist();
+            }
+            busy = "classroom";
+            render_conversation();
+            try {
+                const reply = await call_model(classroom.messages.map(message => ({ role: message.role, content: message.content })));
+                const ending = classroom.messages.at(-1).content === "下课";
+                classroom.messages.push({ role: "assistant", content: reply });
+                if (ending) { classroom.ended = true; }
+                persist();
+            } catch (error) { notify(error.message, true); }
+            finally { busy = ""; render_conversation(); if (!has_pending() && !classroom.ended) { el("teacher-input").focus(); } }
+        }
+
+        function transcript() {
+            if (!classroom) { return ""; }
+            return classroom.messages.filter(message => message.role !== "system").map(message => message.role === "user" ? `教师：${message.content}` : parse_students(message.content).map(student => `${student.name}：${student.content}`).join("\n")).join("\n");
+        }
+
+        el("settings-toggle").addEventListener("click", () => {
+            el("settings").hidden = !el("settings").hidden;
+            el("settings-toggle").setAttribute("aria-expanded", String(!el("settings").hidden));
+        });
+        el("settings-form").addEventListener("submit", event => {
+            event.preventDefault();
+            if (busy) { return; }
+            const next = { base_url: el("base-url").value.trim(), api_key: el("api-key").value.trim(), model: el("model").value.trim() };
+            try { get_endpoint(next.base_url); } catch (error) { notify(error.message, true); return; }
+            if (!next.model) { notify("请填写模型名称。"); return; }
+            settings = next;
+            if (persist()) { notify("设置已保存在此浏览器。"); }
+        });
+        document.querySelectorAll("[data-tab]").forEach((tab, index, tabs) => {
+            tab.addEventListener("click", () => select_tab(tab.dataset.tab));
+            tab.addEventListener("keydown", event => {
+                if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) { return; }
+                event.preventDefault();
+                const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+                select_tab(tabs[next].dataset.tab, true);
+            });
+        });
+        el("prep-form").addEventListener("submit", async event => {
+            event.preventDefault();
+            if (busy || !require_settings()) { return; }
+            const metadata = read_metadata("prep");
+            if (!metadata) { return; }
+            busy = "prep";
+            update_controls();
+            try {
+                prep_report = await call_model([{ role: "user", content: fill_prompt(PREP_PROMPT, metadata) }]);
+                show_output("prep-output", prep_report);
+                for (const field of ["subject", "grade", "topic"]) { if (!classroom) { el(`class-${field}`).value = metadata[field]; } }
+                persist();
+            } catch (error) { notify(error.message, true); }
+            finally { busy = ""; update_controls(); }
+        });
+        el("classroom-form").addEventListener("submit", event => {
+            event.preventDefault();
+            if (busy || classroom || !require_settings()) { return; }
+            const metadata = read_metadata("class");
+            if (!metadata) { return; }
+            classroom = { ...metadata, ended: false, messages: [{ role: "system", content: fill_prompt(CLASS_PROMPT, metadata) }] };
+            persist();
+            render_conversation();
+            el("teacher-input").focus();
+        });
+        el("message-form").addEventListener("submit", event => { event.preventDefault(); send_teacher(el("teacher-input").value); });
+        el("teacher-input").addEventListener("keydown", event => { if ((event.ctrlKey || event.metaKey) && event.key === "Enter") { event.preventDefault(); send_teacher(el("teacher-input").value); } });
+        document.querySelectorAll("[data-student]").forEach(button => button.addEventListener("click", () => send_teacher(`（点名${button.dataset.student}来回答这个问题）`)));
+        el("end-class").addEventListener("click", () => send_teacher("下课"));
+        el("reset-class").addEventListener("click", () => {
+            if (busy || !classroom || !window.confirm("确定清空本次课堂并重新开始吗？当前课堂记录将被删除。")) { return; }
+            classroom = null;
+            el("teacher-input").value = "";
+            persist();
+            render_conversation();
+            notify("课堂记录已清空，可以重新开课。");
+        });
+        el("generate-review").addEventListener("click", async () => {
+            if (busy || !require_settings()) { return; }
+            if (!classroom || !classroom.messages.some(message => message.role === "user")) { notify("先去模拟课堂完成一次试讲"); return; }
+            if (has_pending()) { notify("请先回到模拟课堂，点击“重试回应”完成当前互动。"); return; }
+            busy = "review";
+            update_controls();
+            try {
+                review_report = await call_model([{ role: "user", content: REVIEW_PROMPT.replace("｛完整对话记录｝", () => transcript()) }]);
+                review_signature = current_signature();
+                show_output("review-output", review_report);
+                persist();
+            } catch (error) { notify(error.message, true); }
+            finally { busy = ""; update_controls(); }
+        });
+        el("export-report").addEventListener("click", () => {
+            if (!review_report) { return; }
+            const url = URL.createObjectURL(new Blob([review_report], { type: "text/markdown;charset=utf-8" }));
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "试讲点评报告.md";
+            document.body.append(link);
+            link.click();
+            link.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        });
+        el("copy-report").addEventListener("click", async () => {
+            if (!review_report) { return; }
+            try { await navigator.clipboard.writeText(review_report); notify("报告全文已复制。"); return; } catch (error) { /* 本地文件兼容 */ }
+            const field = document.createElement("textarea");
+            field.value = review_report;
+            field.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+            document.body.append(field);
+            field.focus();
+            field.select();
+            try { if (!document.execCommand("copy")) { throw new Error("复制不可用"); } notify("报告全文已复制。"); }
+            catch (error) { notify("浏览器未允许复制，请使用“导出报告”保存全文。", true); }
+            finally { field.remove(); el("copy-report").focus(); }
+        });
+
+        restore();
+        el("base-url").value = settings.base_url;
+        el("api-key").value = settings.api_key;
+        el("model").value = settings.model;
+        if (classroom) { for (const field of ["subject", "grade", "topic"]) { el(`class-${field}`).value = classroom[field]; } }
+        if (prep_report) { show_output("prep-output", prep_report); }
+        if (review_report) { show_output("review-output", review_report); }
+        render_conversation();
+    </script>
+</body>
+</html>
